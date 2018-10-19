@@ -5,7 +5,7 @@ import { registerUser } from '../reducers/user';
 import { setFlash } from '../reducers/flash';
 
 class Register extends Component {
-  state = { email: '', password: '', passwordConfirmation: '' };
+  state = { email: '', password: '', passwordConfirmation: '', gh_name: '' };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -22,12 +22,23 @@ class Register extends Component {
   }
 
   render() {
-    const { email, password, passwordConfirmation } = this.state;
+    const { email, password, passwordConfirmation, gh_name } = this.state;
 
     return (
       <Segment basic>
         <Header as="h1" textAlign="center">Register Component</Header>
         <Form onSubmit={this.handleSubmit}>
+          <Form.Field>
+            <label htmlFor="gh_name">GitHub Username</label>
+            <input
+              id="gh_name"
+              name="gh_name"
+              placeholder="GitHub Username"
+              required
+              value={gh_name}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
           <Form.Field>
             <label htmlFor="email">Email</label>
             <input
